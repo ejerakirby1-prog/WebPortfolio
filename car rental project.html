@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveNow - Car Rental</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f6fa;
+            color: #222;
+        }
+
+        /* NAVIGATION */
+        header {
+            background: #101d36;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #ffb703;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ffb703;
+        }
+
+        /* HOME SECTION */
+        .home {
+            min-height: 480px;
+            background: linear-gradient(
+                rgba(10, 20, 40, 0.75),
+                rgba(10, 20, 40, 0.75)
+            ), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            color: white;
+        }
+
+        .home-content {
+            max-width: 600px;
+        }
+
+        .home h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .home p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffb703;
+            color: #101d36;
+            padding: 13px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #f59e0b;
+        }
+
+        /* BOOKING SECTION */
+        .booking {
+            background: white;
+            margin: -35px auto 50px;
+            width: 85%;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .booking input {
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .booking button {
+            background: #ffb703;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* GENERAL SECTION */
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #101d36;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* CARS */
+        .cars-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .car-info {
+            padding: 22px;
+        }
+
+        .car-info h3 {
+            color: #101d36;
+            margin-bottom: 10px;
+        }
+
+        .car-info p {
+            color: #777;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            color: #f4a900;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .car-info a {
+            display: block;
+            text-align: center;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #101d36;
+            color: white;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ffb703;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: white;
+        }
+
+        .contact h2 {
+            color: #101d36;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .contact p {
+            margin: 12px;
+            color: #666;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0a1428;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .cars-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav a {
+                margin: 7px;
+                display: inline-block;
+            }
+
+            .home h1 {
+                font-size: 34px;
+            }
+
+            .booking {
+                width: 90%;
+            }
+
+            .booking input,
+            .booking button {
+                width: 100%;
+            }
+
+            .cars-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="logo">DriveNow.</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#cars">Our Cars</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <div class="home" id="home">
+        <div class="home-content">
+            <h1>Find Your Perfect Ride</h1>
+            <p>
+                Experience comfort, convenience, and freedom.
+                Rent your dream car today and enjoy every journey
+                with DriveNow Car Rental.
+            </p>
+            <a href="#cars" class="btn">Explore Cars</a>
+        </div>
+    </div>
+
+    <!-- BOOKING -->
+    <div class="booking">
+        <input type="text" placeholder="Pickup Location">
+        <input type="date">
+        <input type="date">
+        <button type="button">Search Cars</button>
+    </div>
+
+    <!-- AVAILABLE CARS -->
+    <section id="cars">
+        <div class="section-title">
+            <h2>Our Available Cars</h2>
+            <p>Choose the best vehicle for your next adventure.</p>
+        </div>
+
+        <div class="cars-container">
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800" alt="Sports Car">
+                <div class="car-info">
+                    <h3>Chevrolet Camaro</h3>
+                    <p>Automatic | 2 Seats | Sports Car</p>
+                    <div class="price">₱5,000 / Day</div>
+                    <a href="#contact" class="btn">Rent Now</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800" alt="BMW Car">
+                <div class="car-info">
+                    <h3>BMW Sedan</h3>
+                    <p>Automatic | 5 Seats | Luxury</p>
+                    <div class="price">₱4,500 / Day</div>
+                    <a href="#contact" class="btn">Rent Now</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800" alt="SUV">
+                <div class="car-info">
+                    <h3>Toyota SUV</h3>
+                    <p>Automatic | 7 Seats | Family Car</p>
+                    <div class="price">₱3,500 / Day</div>
+                    <a href="#contact" class="btn">Rent Now</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800" alt="Modern Car">
+                <div class="car-info">
+                    <h3>Honda Civic</h3>
+                    <p>Automatic | 5 Seats | Sedan</p>
+                    <div class="price">₱2,800 / Day</div>
+                    <a href="#contact" class="btn">Rent Now</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=800" alt="Luxury Car">
+                <div class="car-info">
+                    <h3>Mercedes-Benz</h3>
+                    <p>Automatic | 5 Seats | Premium</p>
+                    <div class="price">₱6,000 / Day</div>
+                    <a href="#contact" class="btn">Rent Now</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800" alt="Porsche">
+                <div class="car-info">
+                    <h3>Porsche 911</h3>
+                    <p>Automatic | 2 Seats | Sports Car</p>
+                    <div class="price">₱8,000 / Day</div>
+                    <a href="#contact" class="btn">Rent Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <h2>About DriveNow</h2>
+        <p>
+            DriveNow is a car rental service website designed to provide
+            customers with an easy and convenient way to find and rent
+            vehicles. We offer different types of cars suitable for
+            business trips, family vacations, and personal travel.
+            Our goal is to make every journey comfortable, safe, and
+            memorable.
+        </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions? Get in touch with our team!</p>
+        <p>📍 Location: Philippines</p>
+        <p>📞 Phone: 0912-345-6789</p>
+        <p>✉ Email: drivenow@gmail.com</p>
+        <a href="mailto:drivenow@gmail.com" class="btn">Send Email</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 DriveNow Car Rental. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+```
